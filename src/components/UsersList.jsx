@@ -55,7 +55,7 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
                 }),selectionUsers(user)
               }}}></i>
               
-          <i className="fa-solid fa-trash-can" onClick={()=>
+    <i className="fa-solid fa-trash-can" style={{color:'red'}} onClick={()=>
             {
               Swal.fire({
                 title:'Delete user?',
@@ -93,7 +93,7 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
         ))}
       </div>
 
-      <div>
+      <div className="buttonss">
         {page ===1?(''):<button onClick={() => setPage(page - 1)}>
           Prev page
         </button>

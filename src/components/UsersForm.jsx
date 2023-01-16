@@ -63,7 +63,7 @@ const UsersForm = ({getUsers ,usersSelect, selectionUsers}) => {
   return (
     <form onSubmit={handleSubmit(submit)} className="Forms">
       <h1>CREATE USER</h1>
-      <div style={{display: 'flex', gap: '0.5rem'}}>
+      <div className="submits">
               <div>
                 <ul style={{listStyle: 'none'}}>
                   <li>
@@ -107,8 +107,7 @@ const UsersForm = ({getUsers ,usersSelect, selectionUsers}) => {
       </div>
       </div>
       </div>
-
-      <button>Submit</button>
+      <div className="buttonss"><button>Submit</button></div>
     </form>
   );
 };
