@@ -5,13 +5,12 @@
 }
 
 #root {
-  padding: 1rem 2rem;
+ padding: 1rem 2rem;
   width: 100%;
-  height: 101vh;
   color: #fff;
-  background: linear-gradient(39deg,#e50a0a,#161495,#af14a3,#240232, #7f00b2);
+  background: linear-gradient(39deg,red, #ffffff,#af14a3,#1c1c3c,#240232,#7f00b2);
   background-size: 400% 400%;
-  animation: createModifi 14s ease-in-out infinite;
+  animation: createModifi 12s ease-in-out infinite;
 }
 
 .App{
@@ -26,6 +25,7 @@
   background-size: 400% 400%;
   animation: createModifi 15s ease-in-out infinite;
   margin: 0rem 0 auto;
+  filter: drop-shadow(9px 9px 6px black);
 }
 
 .Forms h1{
@@ -58,6 +58,7 @@
   animation: createModifi 16s ease-out infinite;
   padding: 0.4vh;
   position: relative;
+  filter: drop-shadow(9px 9px 6px black);
 }
 
 .card{
@@ -97,6 +98,31 @@
   display: flex;
   justify-content: center;
 }
+
+.buttonss2{
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+}
+
+.buttonss2 button{
+  border-radius: 50%;
+  width: 5vh;
+  height: 29px;
+  border-bottom: outset;
+  background-color: #e3d8ca;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.buttonss button{
+  border-radius: 50%;
+  width: 7vh;
+  height: 50px;
+  border-bottom: outset;
+  background-color: #e3d8ca;
+  filter: drop-shadow(2px 4px 6px black);
+}
 /* .texto{
   animation: textos 8s ease-out infinite;
   position: absolute;
@@ -113,9 +139,6 @@
   }
   .card_edit{
     align-self: end;
-  }
-  #root{
-    height: 100vh;
   }
 }
 
@@ -140,5 +163,8 @@
   }
   .colory{
     width: 50%;
+  }
+  #root{
+    height: 100vh;
   }
 }

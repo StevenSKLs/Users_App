@@ -30,18 +30,20 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
         {UsersPaginated.map((user) => (
           <div key={user.id} className='cards_users'>
             <div>
-            <h2>
+            <h2 style={{fontSize: '1rem', marginBottom: '3px'}}>
               {user.first_name}, {user.last_name}
             </h2>
-              <div>
+              <div style={{marginBottom: '3px'}}>
                 <b>Email: </b>
                 {user.email}
               </div>
-              <div>
+              <div style={{marginBottom: '3px'}}>
                 <b>Password: </b>
                 {user.password}
               </div>
-              <div>{user.birthday}</div>
+              <div style={{marginBottom: '3px'}}>
+                {user.birthday}
+              </div>
             </div>
             <div className="card_edit">
             <i className="fa-solid fa-user-pen" onClick={()=>
@@ -93,15 +95,15 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
         ))}
       </div>
 
-      <div className="buttonss">
-        {page ===1?(''):<button onClick={() => setPage(page - 1)}>
-          Prev page
+      <div className="buttonss2">
+        {page ===1?(''):<button onClick={() => setPage(page - 1)}> 
+        <i className="fa-solid fa-angles-left"></i>
         </button>
         }
         {page} / {totalPages}
         {page === totalPages?(''):<button
           onClick={() => setPage(page + 1)}>
-          Next page
+            <i className="fa-solid fa-angles-right"></i>
         </button>
         }
         
