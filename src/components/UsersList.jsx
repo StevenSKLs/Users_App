@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const UsersList = ({ usersList , selectionUsers, getUsers}) => {
@@ -11,16 +11,28 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
         axios.delete(`https://users-crud.academlo.tech/users/${user.id}/`).then(()=> getUsers())
     }
 
+    const [page, setPage] = useState(1)
+    const PageUser = 4;
+    const lastPage = page * PageUser;
+    const firstPage = lastPage - PageUser;
+    const UsersPaginated = order.slice(firstPage, lastPage);
+    const totalPages = Math.ceil(order.length / PageUser)
+    //morty.residents? Math.ceil(morty.residents?.length / perPage):1
+    
+    const retro =()=>{
+      setPage(1)
+    }
+
   return (
-    <div>
+    <div className="colory">
       <h1>Users List</h1>
-      <div>
-        {order.map((user) => (
-          <div key={user.id}>
+      <div className="card">
+        {UsersPaginated.map((user) => (
+          <div key={user.id} className='cards_users'>
+            <div>
             <h2>
               {user.first_name}, {user.last_name}
             </h2>
-            <div>
               <div>
                 <b>Email: </b>
                 {user.email}
@@ -31,7 +43,8 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
               </div>
               <div>{user.birthday}</div>
             </div>
-            <button onClick={()=>
+            <div className="card_edit">
+            <i className="fa-solid fa-user-pen" onClick={()=>
               { {
                 Swal.fire({
                   title:'Slect User',
@@ -40,8 +53,9 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
                   timer: 2000,
                   showConfirmButton: false
                 }),selectionUsers(user)
-              }}}>Slect User</button>
-          <button onClick={()=>
+              }}}></i>
+              
+          <i className="fa-solid fa-trash-can" onClick={()=>
             {
               Swal.fire({
                 title:'Delete user?',
@@ -53,10 +67,12 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
               }).then(respuesta =>{
                 if (respuesta.isConfirmed) {
                   Swal.fire({
+                    title:'List update',
                     text:'User was deleted successfully',
                     icon:'success'
                   })
                   deletes(user)
+                  retro()
                 } else if (respuesta.isDenied) {
                   Swal.fire({
                     title:'The user is still alive. XD',
@@ -71,9 +87,24 @@ const UsersList = ({ usersList , selectionUsers, getUsers}) => {
                 }
               })
             }
-          }>Delete User</button>
+          }></i>
+            </div>
           </div>
         ))}
+      </div>
+
+      <div>
+        {page ===1?(''):<button onClick={() => setPage(page - 1)}>
+          Prev page
+        </button>
+        }
+        {page} / {totalPages}
+        {page === totalPages?(''):<button
+          onClick={() => setPage(page + 1)}>
+          Next page
+        </button>
+        }
+        
       </div>
     </div>
   );

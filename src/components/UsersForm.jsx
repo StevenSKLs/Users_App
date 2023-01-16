@@ -63,9 +63,27 @@ const UsersForm = ({getUsers ,usersSelect, selectionUsers}) => {
   return (
     <form onSubmit={handleSubmit(submit)} className="Forms">
       <h1>CREATE USER</h1>
+      <div style={{display: 'flex', gap: '0.5rem'}}>
+              <div>
+                <ul style={{listStyle: 'none'}}>
+                  <li>
+            <i className="fa-solid fa-user" style={{marginBottom: '8px'}}></i>
+                  </li>
+                  <li>
+           <i className="fa-solid fa-envelope" style={{marginBottom: '8px'}}></i>         
+                  </li>
+                  <li>
+          <i className="fa-solid fa-lock" style={{marginBottom: '8px'}}></i>      
+                  </li>
+                  <li>
+           <i className="fa-solid fa-cake" style={{marginBottom: '8px'}}></i>         
+                  </li>
+                </ul>
+      </div>
       <div>
+          <div className="input_users">
         <div className="inputs">
-        <label htmlFor="first_name"><i className="fa-solid fa-user"></i></label>
+        <label htmlFor="first_name"></label>
         <input type="text" id="first_name" {...register("first_name")} required placeholder="First Name"/>
       </div>
        <div className="inputs">
@@ -74,18 +92,22 @@ const UsersForm = ({getUsers ,usersSelect, selectionUsers}) => {
       </div>
       </div>
      <div className="inputs">
-        <label htmlFor="email"><i className="fa-solid fa-envelope"></i></label>
+        <label htmlFor="email"></label>
         <input type="text" id="email" {...register("email")} required  placeholder="user@email.com"
       pattern=".+@[a-z0-9.-]+\.com"/>
       </div>
       <div className="inputs">
-        <label htmlFor="password"><i className="fa-solid fa-lock"></i></label>
-        <input type="text" id="password" {...register("password")} placeholder="Password"/>
+        <label htmlFor="password"></label>
+        <input type="password" id="password" {...register("password")} placeholder="Password"/>
       </div>
       <div className="inputs">
-        <label htmlFor="birthday"><i className="fa-solid fa-cake"></i></label>
-        <input type="date" id="birthday" {...register("birthday")} min="2000-01-01" max="2050-12-31" required placeholder="Birthday"/>
+      <label htmlFor="birthday"></label>
+        <input type="date" id="birthday" {...register("birthday")} 
+        min="2000-01-01" max="2050-12-31" required placeholder="Birthday"/>
       </div>
+      </div>
+      </div>
+
       <button>Submit</button>
     </form>
   );
